@@ -1,13 +1,21 @@
-import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 const FloatingNewEntryButton = () => {
   return (
+     <LinearGradient
+    colors={['#3BB8FF', '#1268A3']}
+    start={{ x: 0.5, y: 0 }}
+    end={{ x: 0.5, y: 1 }}
+    style={styles.floatingButton}
+  >
     <TouchableOpacity style={styles.floatingButton}>
       <Ionicons name="pencil" size={20} color="white" />
       <Text style={styles.floatingButtonText}>New Entry</Text>
     </TouchableOpacity>
+    </LinearGradient>
   );
 };
 

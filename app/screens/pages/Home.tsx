@@ -1,6 +1,6 @@
 import FloatingNewEntryButton from "@/app/components/FloatingNewEntryButton ";
 import Calender1 from "@/app/components/switchs/calender";
-import CrossPlatformMap from "@/app/components/switchs/map";
+// import CrossPlatformMap from "@/app/components/switchs/map";
 import Media from "@/app/components/switchs/media";
 import {
   Feather,
@@ -8,6 +8,7 @@ import {
   MaterialIcons
 } from "@expo/vector-icons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -32,7 +33,7 @@ const HomePage = () => {
       case "Media":
         return <Media />;
       case "Maps":
-        return <CrossPlatformMap />;
+        // return <CrossPlatformMap />;
       default:
         return (
           <View style={styles.journalContent}>
@@ -66,8 +67,16 @@ const HomePage = () => {
   };
 
   return (
+    
     <SafeAreaView style={styles.container}>
       {/* Navbar */}
+      
+      <LinearGradient
+         colors={['#3359a5', '#1ab3cd']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.navbar}
+        >
       <View style={styles.navbar}>
         <TouchableOpacity>
           <FontAwesome6 name="bars-staggered" size={20} color="white" />
@@ -86,13 +95,23 @@ const HomePage = () => {
           </TouchableOpacity>
         </View>
       </View>
+      </LinearGradient>
 
       {/* Main Scroll Content */}
+      
+      <LinearGradient
+         colors={['#3359a5', '#1ab3cd']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.content}
+        >
       <ScrollView style={styles.content}>
+        
         <View style={styles.header}>
           <Text style={styles.title}>My Journal</Text>
           <Text style={styles.year}>2025</Text>
         </View>
+        
 
         {/* Switch Tabs */}
         <View style={styles.switchContainer}>
@@ -110,7 +129,7 @@ const HomePage = () => {
                   <Ionicons
                     name="book"
                     size={20}
-                    color={activeTab === tab ? "black" : "gray"}
+                    color={activeTab === tab ? "#44b3ff" : "gray"}
                   />
                 ) : (
                   <Text style={styles.switchText}>{tab}</Text>
@@ -130,6 +149,8 @@ const HomePage = () => {
           </View>
         </View>
       </ScrollView>
+      </LinearGradient>
+      
 
       {/* Floating New Entry Button */}
       <View style={styles.floatingButtonWrapper}>
@@ -148,7 +169,7 @@ const HomePage = () => {
           <Ionicons
             name="book"
             size={24}
-            color={activeFooterTab === "Journals" ? "#3498db" : "gray"}
+            color={activeFooterTab === "Journals" ? "#44b3ff" : "gray"}
           />
           <Text style={styles.footerText}>Journals</Text>
         </TouchableOpacity>
@@ -162,7 +183,7 @@ const HomePage = () => {
           <MaterialIcons
             name="more-horiz"
             size={24}
-            color={activeFooterTab === "More" ? "#3498db" : "gray"}
+            color={activeFooterTab === "More" ? "#44b3ff" : "gray"}
           />
           <Text style={styles.footerText}>More</Text>
         </TouchableOpacity>
@@ -175,16 +196,14 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
   navbar: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    gap: 190,
     alignItems: "center",
     padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "#eeeeee57",
-    backgroundColor: "#3498db",
+    
   },
   navIcons: { flexDirection: "row" },
   navIcon: { marginLeft: 20 },
-  content: { flex: 1, backgroundColor: "#3498db" },
+  content: { flex: 1, backgroundColor: "transparent" },
   header: { padding: 20 },
   title: { fontSize: 24, fontWeight: "bold", color: "white" },
   year: { fontSize: 16, color: "white", marginTop: 5 },
@@ -213,7 +232,8 @@ const styles = StyleSheet.create({
   activeTab: {
     backgroundColor: "#fff",
     borderBottomWidth: 2,
-    borderBottomColor: "#3498db",
+    borderBottomColor: "#44b3ff",
+    
   },
   switchText: { fontSize: 14, color: "black" },
   tabContentContainer: {
@@ -269,7 +289,7 @@ const styles = StyleSheet.create({
   },
   activeFooterTab: {
     borderTopWidth: 2,
-    borderTopColor: "#3498db",
+    borderTopColor: "#44b3ff",
   },
   footerText: {
     fontSize: 12,

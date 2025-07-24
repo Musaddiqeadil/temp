@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
+import { LinearGradient } from 'expo-linear-gradient';
 import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import {
@@ -127,7 +128,7 @@ export default function Register() {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../../assets/images/landspace.png")}
+        source={require("../../assets/images/logo.png")}
         style={styles.logo}
       />
 
@@ -165,22 +166,29 @@ export default function Register() {
               <Ionicons
                 name={showPassword ? "eye-off" : "eye"}
                 size={20}
-                color="#777"
+                color="#121826"
               />
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity 
-            style={styles.loginButton} 
-            onPress={handleRegister}
-            disabled={loading}
-          >
-            {loading ? (
-              <ActivityIndicator color="#fff" />
-            ) : (
-              <Text style={styles.loginButtonText}>Register</Text>
-            )}
-          </TouchableOpacity>
+          <TouchableOpacity
+  onPress={handleRegister}
+  disabled={loading}
+  style={{ borderRadius: 8, overflow: 'hidden', marginBottom: 20 }}
+>
+  <LinearGradient
+    colors={['#3359a5', '#1ab3cd']}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 0 }}
+    style={styles.loginButton}
+  >
+    {loading ? (
+      <ActivityIndicator color="#fff" />
+    ) : (
+      <Text style={styles.loginButtonText}>Sign Up</Text>
+    )}
+  </LinearGradient>
+</TouchableOpacity>
 
           <View style={styles.signUpContainer}>
             <Text style={styles.signUpText}>Already have an account? </Text>
@@ -202,16 +210,23 @@ export default function Register() {
             maxLength={6}
           />
 
-          <TouchableOpacity 
-            style={styles.loginButton} 
+          <TouchableOpacity
             onPress={handleVerifyOtp}
             disabled={loading}
+            style={{ borderRadius: 8, overflow: 'hidden', marginBottom: 20 }}
           >
-            {loading ? (
-              <ActivityIndicator color="#fff" />
-            ) : (
-              <Text style={styles.loginButtonText}>Verify OTP</Text>
-            )}
+            <LinearGradient
+              colors={['#3552A2', '#1889D0']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.loginButton}
+            >
+              {loading ? (
+                <ActivityIndicator color="#fff" />
+              ) : (
+                <Text style={styles.loginButtonText}>Verify OTP</Text>
+              )}
+            </LinearGradient>
           </TouchableOpacity>
 
           <TouchableOpacity 
@@ -234,59 +249,58 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#ffffff",
   },
   logo: {
-    width: 250,
+    width: 200,
     height: 100,
     alignSelf: "center",
-    marginBottom: 30,
+    marginBottom: 10,
   },
   label: {
     fontSize: 14,
-    color: "#555",
+    color: "#121826",
     marginBottom: 8,
     fontWeight: "500",
   },
   subText: {
     fontSize: 12,
-    color: "#777",
+    color: "#525f72",
     marginBottom: 20,
     textAlign: "center",
   },
   input: {
     height: 50,
-    borderWidth: 1,
-    borderColor: "#ddd",
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 20,
+    backgroundColor: "#f1f5f9",
+    color: "#525f72",
   },
   passwordContainer: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#ddd",
     borderRadius: 8,
     paddingHorizontal: 15,
-    marginBottom: 20,
+    marginBottom: 10,
+    backgroundColor: "#f1f5f9",
   },
   passwordInput: {
     flex: 1,
     height: 50,
+    color: "#525f72",
   },
   loginButton: {
-    backgroundColor: "#3498db",
     height: 50,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: 20,
   },
   loginButtonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "600",
   },
   resendButton: {
     height: 50,
@@ -294,12 +308,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "#3498db",
+    borderColor: "#3552A2",
+    backgroundColor: 'transparent'
   },
   resendButtonText: {
-    color: "#3498db",
+    color: "#3552A2",
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "600",
   },
   signUpContainer: {
     flexDirection: "row",
@@ -307,10 +322,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   signUpText: {
-    color: "#555",
+    color: "#121826",
   },
   signUpLink: {
-    color: "#3498db",
+    color: "#007aff",
     fontWeight: "500",
+    marginLeft: 5,
   },
 });

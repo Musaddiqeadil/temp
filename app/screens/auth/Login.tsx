@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
+import { LinearGradient } from 'expo-linear-gradient';
 import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import {
@@ -11,6 +12,7 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+
 import Toast from "react-native-toast-message";
 
 export default function Login() {
@@ -113,7 +115,7 @@ export default function Login() {
           <Ionicons
             name={showPassword ? "eye-off" : "eye"}
             size={20}
-            color="#777"
+            color="#121826"
           />
         </TouchableOpacity>
       </View>
@@ -122,17 +124,24 @@ export default function Login() {
         Forgot Password?
       </Link>
 
-      <TouchableOpacity 
-        style={styles.loginButton} 
-        onPress={handleSubmit}
-        disabled={loading}
-      >
-        {loading ? (
-          <ActivityIndicator color="#fff" />
-        ) : (
-          <Text style={styles.loginButtonText}>Login</Text>
-        )}
-      </TouchableOpacity>
+      <TouchableOpacity
+  onPress={handleSubmit}
+  disabled={loading}
+  style={{ borderRadius: 8, overflow: 'hidden', marginBottom: 20 }}
+>
+  <LinearGradient
+   colors={['#3359a5', '#1ab3cd']}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 0 }}
+    style={styles.loginButton}
+  >
+    {loading ? (
+      <ActivityIndicator color="#fff" />
+    ) : (
+      <Text style={styles.loginButtonText}>Login</Text>
+    )}
+  </LinearGradient>
+</TouchableOpacity>
 
       <View style={styles.dividerContainer}>
         <View style={styles.dividerLine} />
@@ -151,7 +160,7 @@ export default function Login() {
       <TouchableOpacity style={styles.socialButton}>
         <Image
           source={require("../../assets/images/apple-icon.png")}
-          style={[styles.socialIcon, styles.apple]}
+          style={styles.socialIcon}
         />
         <Text style={styles.socialButtonText}>Sign in with Apple</Text>
       </TouchableOpacity>
@@ -176,7 +185,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: "center",
-    backgroundColor: "#0A1128", // Deep navy blue background
+    backgroundColor: "#ffffff", // Deep navy blue background
   },
   logo: {
     width: 200,
@@ -187,42 +196,40 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: "#A4B0BD", // Soft gray for labels
+    color: "#121826", // Soft gray for labels
     marginBottom: 8,
     fontWeight: "500",
   },
   input: {
     height: 50,
-    borderWidth: 1,
-    borderColor: "#1E3A8A", // Medium blue border
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 20,
-    backgroundColor: "#16213E", // Darker blue input background
-    color: "#F8F9FA", // Light text color
+    backgroundColor: "#f1f5f9", // Darker blue input background
+    color: "#525f72", // Light text color
   },
   passwordContainer: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#1E3A8A",
+    
+    borderColor: "#fff",
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 10,
-    backgroundColor: "#16213E",
+    backgroundColor: "#f1f5f9",
   },
   passwordInput: {
     flex: 1,
     height: 50,
-    color: "#F8F9FA",
+    color: "#525f72",
+    backgroundColor: "#f1f5f9",
   },
   forgotPassword: {
     textAlign: "right",
-    color: "#3B82F6", // Bright blue for links
+    color: "#007aff", // Bright blue for links
     marginBottom: 20,
   },
-  loginButton: {
-    backgroundColor: "#6b9cee", // Vibrant blue for primary button
+  loginButton: { // Vibrant blue for primary button
     height: 50,
     borderRadius: 8,
     justifyContent: "center",
@@ -230,9 +237,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   loginButtonText: {
-    color: "#0A1128",
+    color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "600",
   },
   dividerContainer: {
     flexDirection: "row",
@@ -242,11 +249,11 @@ const styles = StyleSheet.create({
   dividerLine: {
     flex: 1,
     height: 1,
-    backgroundColor: "#1E293B", // Dark blue-gray for divider
+    backgroundColor: "#e2e8f0", // Dark blue-gray for divider
   },
   dividerText: {
     marginHorizontal: 10,
-    color: "#94A3B8", // Medium gray for divider text
+    color: "#212633", // Medium gray for divider text
   },
   socialButton: {
     flexDirection: "row",
@@ -254,14 +261,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 50,
     borderWidth: .5,
-    borderColor: "#6b9cee",
+    borderColor: "#e2e8f0",
     borderRadius: 8,
     marginBottom: 10,
     backgroundColor: 'transparent'// Dark background for social buttons
   },
-  apple: {
-    tintColor: "#fff", // Light color for Apple icon
-  },
+  
   socialIcon: {
     width: 20,
     height: 20,
@@ -269,7 +274,7 @@ const styles = StyleSheet.create({
     
   },
   socialButtonText: {
-    color: "#F8F9FA", // Light text for social buttons
+    color: "#212633", // Light text for social buttons
     fontWeight: "500",
   },
   signUpContainer: {
@@ -278,10 +283,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   signUpText: {
-    color: "#94A3B8", // Medium gray for secondary text
+    color: "#121826", // Medium gray for secondary text
   },
   signUpLink: {
-    color: "#6b9cee", // Bright blue for links
+    color: "#007aff", // Bright blue for links
     fontWeight: "500",
     marginLeft: 5,
   },
